@@ -8,7 +8,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.mohsen.jpa.hibernate.demo.Repositoty.CourseRepositoty;
-import com.mohsen.jpa.hibernate.demo.entity.Course;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner{
@@ -24,7 +23,6 @@ public class DemoApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Course course=repository.findById(10001L);
-		logger.info("Course 10001 -> {}",course);
+		logger.info("Course 10001 -> {}",repository.findById(10001L));
 	}
 }
