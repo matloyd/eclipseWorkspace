@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.mohsen.jpa.hibernate.demo.entity.Course;
 
 @Repository
-public class CourseRepositoty {
+public class CourseRepository {
 	
 	@Autowired
 	EntityManager em;

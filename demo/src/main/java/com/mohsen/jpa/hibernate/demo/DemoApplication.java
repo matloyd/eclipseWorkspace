@@ -7,7 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.mohsen.jpa.hibernate.demo.Repositoty.CourseRepositoty;
+import com.mohsen.jpa.hibernate.demo.Repositoty.CourseRepository;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner{
@@ -15,7 +15,7 @@ public class DemoApplication implements CommandLineRunner{
 	private Logger logger=LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	private CourseRepositoty repository;
+	private CourseRepository repository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
