@@ -12,7 +12,7 @@ insert into passport(id,number) values (40002,'A09890');
 insert into passport(id,number) values (40003,'J20458');
 
 insert into student(id,name,PASSPORT_ID) values (20001,'Ranga',40001);
-insert into student(id,name,PASSPORT_ID) values (20002,'Adam',40002);
+insert into student(id,name,PASSPORT_ID) values (20002,'Adam',null);
 insert into student(id,name,PASSPORT_ID) values (20003,'Jane',40003);
 
 insert into review(id,rating,description) values (50001,'5','Great course');

@@ -37,8 +37,9 @@ public class StudentRepository {
 	
 	public void saveStudentWithPassport() {
 		Passport p1=new Passport("Q74482");
+		em.persist(p1);
 		Student s1=new Student("Mike");
-		
+		s1.setPassport(p1);
 		em.persist(s1);
 		
 	}
