@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.mohsen.jpa.hibernate.demo.DemoApplication;
+import com.mohsen.jpa.hibernate.demo.entity.Passport;
 import com.mohsen.jpa.hibernate.demo.entity.Student;
 
 @RunWith(SpringRunner.class)
@@ -32,6 +33,14 @@ public class StudentRepositoryTest {
 		 Student student = sr.findById(20001L);
 		 logger.info("student ---> {}",student);
 		 logger.info("passport ---> {}",student.getPassport());
+	}
+	
+	@Test
+	@Transactional
+	public void retrievePassportAndAssociatedStudent() {
+		 Passport p1 = em.find(Passport.class,40002L);
+		 logger.info("passport ---> {}",p1);
+		 logger.info("student ---> {}",p1.getStudent());
 	}
 
 }
