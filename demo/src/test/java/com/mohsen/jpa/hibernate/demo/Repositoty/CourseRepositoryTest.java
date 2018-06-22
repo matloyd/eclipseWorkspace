@@ -3,8 +3,12 @@ package com.mohsen.jpa.hibernate.demo.Repositoty;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import javax.persistence.EntityManager;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
@@ -12,6 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.mohsen.jpa.hibernate.demo.DemoApplication;
 import com.mohsen.jpa.hibernate.demo.entity.Course;
+import com.mohsen.jpa.hibernate.demo.entity.Review;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=DemoApplication.class)
@@ -19,6 +24,11 @@ public class CourseRepositoryTest {
 	
 	@Autowired
 	CourseRepository cr;
+	
+	@Autowired
+	EntityManager em;
+	
+	private Logger logger=LoggerFactory.getLogger(this.getClass());
 
 	@Test
 	public void findById_basics() {
@@ -46,6 +56,17 @@ public class CourseRepositoryTest {
 	@DirtiesContext
 	public void playWithEntityManager() {
 		cr.playWithEntityManager();
+	}
+	
+	@Test
+	public void retrieveReviewsForCourse() {
+		logger.info("{}",cr.findById(10001L).getReviews());
+	}
+	
+	@Test
+	public void retrieveCourseForReview() {
+		Review r = em.find(Review.class, 50001L);
+		logger.info("{}",r.getCourse());
 	}
 
 }

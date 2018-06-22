@@ -2,8 +2,6 @@ package com.mohsen.jpa.hibernate.demo.Repositoty;
 
 import javax.persistence.EntityManager;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +15,6 @@ public class StudentRepository {
 
 	@Autowired
 	EntityManager em;
-	private Logger logger=LoggerFactory.getLogger(this.getClass());
 
 	public Student findById(Long id) {
 		return em.find(Student.class,id);
@@ -41,7 +38,9 @@ public class StudentRepository {
 		Student s1=new Student("Mike");
 		s1.setPassport(p1);
 		em.persist(s1);
-		
 	}
+	public void retrieveStudentWithPassport() {
 
+		System.out.println(findById(20002L)+"\t"+findById(20002L).getPassport());
+	}
 }
