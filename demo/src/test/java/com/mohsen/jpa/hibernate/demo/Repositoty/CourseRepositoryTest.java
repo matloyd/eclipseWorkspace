@@ -13,10 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mohsen.jpa.hibernate.demo.DemoApplication;
 import com.mohsen.jpa.hibernate.demo.entity.Course;
 import com.mohsen.jpa.hibernate.demo.entity.Review;
+import com.mohsen.jpa.hibernate.demo.entity.Student;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=DemoApplication.class)
@@ -69,4 +71,18 @@ public class CourseRepositoryTest {
 		logger.info("{}",r.getCourse());
 	}
 
+	@Test
+	@Transactional
+	public void retrieveStudentAndCourse() {
+		Student r = em.find(Student.class, 20001L);
+		logger.info("{}",r);
+		logger.info("{}",r.getCourses());
+	}
+	@Test
+	@Transactional
+	public void retrieveCourseAndStudent() {
+		Course r = em.find(Course.class, 10001L);
+		logger.info("{}",r);
+		logger.info("{}",r.getStudents());
+	}
 }
